@@ -15,6 +15,7 @@ public class Pessoa {
     public Pessoa() {
     }
 
+
     public Pessoa(Integer id, String nomeCompleto, String rg, String cpf, String dataNascimento, String tipoSanguineo, String email, String foneFixo, String foneCel) {
         this.id = id;
         this.nomeCompleto = nomeCompleto;
