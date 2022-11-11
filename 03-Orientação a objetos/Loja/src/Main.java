@@ -30,5 +30,7 @@ public class Main {
         System.out.println("Estoque: " + p3.getEstoque());
         System.out.println("Data de cadastro: " + p3.getDataCadastro());
 
+
+
     }
 }

@@ -17,6 +17,6 @@ public class Main {
         carrinho.alterarValorItem(799.0);
         System.out.println("Valor total do item: " + carrinho.calculaTotalItem());
 
-        
+
     }
 }

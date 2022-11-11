@@ -1,6 +1,7 @@
 package entities;
 
 import java.time.Instant;
+import java.util.Objects;
 
 public class Produto {
 
@@ -82,7 +83,25 @@ public class Produto {
         this.dataCadastro = dataCadastro;
     }
 
+    //Métodos Customizados
+
+
+    // Equals and Hashcode - teste de igualdade entre os retornos.
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Produto produto = (Produto) o;
+        return Objects.equals(id, produto.id) && Objects.equals(nome, produto.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome);
+    }
+
+
+    @Override // SobreEscrita
     public String toString() {
         return "Produto{" +
                 "id=" + id +
