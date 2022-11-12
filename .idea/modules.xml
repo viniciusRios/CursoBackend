@@ -7,8 +7,11 @@
       <module fileurl="file://$PROJECT_DIR$/EstruturasDeDecisao/EstruturasDeDecisao.iml" filepath="$PROJECT_DIR$/EstruturasDeDecisao/EstruturasDeDecisao.iml" />
       <module fileurl="file://$PROJECT_DIR$/EstruturasDeRepeticao/EstruturasDeRepeticao.iml" filepath="$PROJECT_DIR$/EstruturasDeRepeticao/EstruturasDeRepeticao.iml" />
       <module fileurl="file://$PROJECT_DIR$/Exercicios01-Logica/Exercicios01-Logica.iml" filepath="$PROJECT_DIR$/Exercicios01-Logica/Exercicios01-Logica.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ExerciciosLista-02/ExerciciosLista-02.iml" filepath="$PROJECT_DIR$/ExerciciosLista-02/ExerciciosLista-02.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/IdeaProjects.iml" filepath="$PROJECT_DIR$/.idea/IdeaProjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ExerciciosLista-02/Pessoa/Pessoa.iml" filepath="$PROJECT_DIR$/ExerciciosLista-02/Pessoa/Pessoa.iml" />
       <module fileurl="file://$PROJECT_DIR$/PrimeiroProjeto/PrimeiroProjeto.iml" filepath="$PROJECT_DIR$/PrimeiroProjeto/PrimeiroProjeto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ExerciciosLista-02/Veiculo/Veiculo.iml" filepath="$PROJECT_DIR$/ExerciciosLista-02/Veiculo/Veiculo.iml" />
     </modules>
   </component>
 </project>
