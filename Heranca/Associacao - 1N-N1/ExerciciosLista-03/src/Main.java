@@ -3,7 +3,7 @@ import entities.*;
 public class Main {
     public static void main(String[] args) {
 
-        Endereco e1 = new Endereco(1, "R. rua","Numero x", "Porto Alegre", "Rio grande do sul");
+        Endereco e1 = new Endereco(1, "R. rua","Numero x", "Cidade 1", "estado 1");
 
 
         System.out.println("MARKETING ");

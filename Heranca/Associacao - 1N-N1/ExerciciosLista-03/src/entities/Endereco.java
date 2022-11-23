@@ -7,14 +7,14 @@ public class Endereco {
         private int id;
         private String rua;
         private String numero;
-        private String cidade;
-        private String estado;
+        private Cidade cidade;
+        private Estado estado;
 
 
     public Endereco() {
     }
 
-    public Endereco(int id, String rua, String numero, String cidade, String estado) {
+    public Endereco(int id, String rua, String numero, Cidade cidade, Estado estado) {
         this.id = id;
         this.rua = rua;
         this.numero = numero;
@@ -46,33 +46,20 @@ public class Endereco {
         this.numero = numero;
     }
 
-    public String getCidade() {
+    public Cidade getCidade() {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
+    public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
 
-    public String getEstado() {
+    public Estado getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(Estado estado) {
         this.estado = estado;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Endereco endereco = (Endereco) o;
-        return id == endereco.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 
     @Override
@@ -81,8 +68,8 @@ public class Endereco {
                 "id=" + id +
                 ", rua='" + rua + '\'' +
                 ", numero='" + numero + '\'' +
-                ", cidade='" + cidade + '\'' +
-                ", estado='" + estado + '\'' +
+                ", cidade=" + cidade +
+                ", estado=" + estado +
                 '}';
     }
 }
