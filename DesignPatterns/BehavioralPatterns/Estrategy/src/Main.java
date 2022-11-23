@@ -4,7 +4,7 @@ import entities.PedidoEletro;
 
 public class Main {
 
-    public static void main(String[] args)throws Exception {
+    public static void main(String[] args) throws Exception {
 
 
         Pedido pe = new PedidoEletro(1000.00, "DVD");
