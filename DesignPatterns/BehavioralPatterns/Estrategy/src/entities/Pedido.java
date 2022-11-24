@@ -5,6 +5,7 @@ import java.util.Objects;
 public abstract class Pedido {
 
     private Double valor;
+    private Frete tipoFrete; //variavel do tipo INTERFACE
 
 
     public Pedido() {
@@ -25,9 +26,13 @@ public abstract class Pedido {
 
     //METODOS CUSTOMIZADOS
 
-    public abstract Double calcFreteComum();
-    public abstract Double calcFreteExpresso() throws Exception;
+   public void setTipoFrete(Frete tipoFrete){
+        this.tipoFrete = tipoFrete;
+   }
 
+   public double calcularFrete(){
+        return this.tipoFrete.calcular(this.valor);
+   }
 
 
 

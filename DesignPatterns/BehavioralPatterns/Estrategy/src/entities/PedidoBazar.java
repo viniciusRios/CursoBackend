@@ -20,14 +20,6 @@ public class PedidoBazar extends Pedido{
         this.descricao = descricao;
     }
 
-    @Override
-    public Double calcFreteComum() {
-        return getValor() * 0.03;
-    }
 
-    @Override
-    public Double calcFreteExpresso() throws Exception {
 
-        throw new Exception("Modalidade Indisponivel");
-    }
 }

@@ -21,14 +21,4 @@ public class PedidoEletro extends Pedido{
     }
 
 
-    @Override
-    public Double calcFreteComum() {
-
-        return getValor()*0.05;
-    }
-
-    @Override
-    public Double calcFreteExpresso() {
-        return getValor() * 0.1;
-    }
 }
