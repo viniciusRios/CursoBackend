@@ -6,7 +6,7 @@ import entities.types.Boleto60d;
 
 public class Banco {
 
-        public Boleto gerarBoleto(int venc, double valor){
+        public Boleto gerarBoleto(int venc, double valor) throws Exception {
 
             Boleto boleto = null;
 
@@ -21,7 +21,7 @@ public class Banco {
                     boleto = new Boleto60d(valor);
                     break;
                 default:
-                    //Lança uma exception no default
+                    throw new Exception ("Vencimento INVALIDO tente novamento: ");//Lança uma exception no default
 
             }
 
