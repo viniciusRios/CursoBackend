@@ -7,7 +7,6 @@ import java.util.Objects;
 
 @Entity // cria uma tabela pelo Spring
 @Table(name = "tabela_artista") // Renomeia a tabela para tabela_artista
-
 public class Artista {
 
     @Id // campo definido como chave primaria
@@ -16,8 +15,23 @@ public class Artista {
     private String nome;
     private boolean banda;
 
+    @ManyToOne
+    @JoinColumn(name = "pais_id")
+    private Pais pais;
+
+    @ManyToOne
+    @JoinColumn(name = "estado_id")
+    private Estado estado;
+
+    @ManyToOne
+    @JoinColumn(name = "cidade_id")
+    private Cidade cidade;
+
+
     @OneToMany(mappedBy = "artista")
     private List<Album> albuns = new ArrayList<>();
+
+
 
 
     public Artista() {
@@ -53,6 +67,22 @@ public class Artista {
         this.banda = banda;
     }
 
+    public List<Album> getAlbuns() {
+        return albuns;
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -72,6 +102,10 @@ public class Artista {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", banda=" + banda +
+                ", pais=" + pais +
+                ", estado=" + estado +
+                ", cidade=" + cidade +
+                ", albuns=" + albuns +
                 '}';
     }
 }

@@ -1,6 +1,8 @@
 package Rios.Vinicius.musica.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity // cria uma tabela pelo Spring
@@ -13,9 +15,15 @@ public class Album {
     private String titulo;
     private Integer ano;
 
+
     @ManyToOne
     @JoinColumn(name = "artista_id")
     private Artista artista;
+
+    @ManyToOne
+    @JoinColumn(name = "genero_id")
+    private Genero genero;
+
 
     public Album() {
     }
@@ -38,6 +46,14 @@ public class Album {
         return titulo;
     }
 
+    public Artista getArtista() {
+        return artista;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
@@ -48,6 +64,14 @@ public class Album {
 
     public void setAno(Integer ano) {
         this.ano = ano;
+    }
+
+    public void setArtista(Artista artista) {
+        this.artista = artista;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
     }
 
     @Override
