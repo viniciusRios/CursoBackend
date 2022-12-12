@@ -1,7 +1,7 @@
 package Rios.Vinicius.musica.controllers;
 
-import Rios.Vinicius.musica.dtos.PaisDto;
-import Rios.Vinicius.musica.services.PaisService;
+import Rios.Vinicius.musica.dtos.GeneroDto;
+import Rios.Vinicius.musica.services.GeneroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,45 +11,45 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/paises")
-public class PaisController {
+@RequestMapping(value = "/generos")
+public class GeneroController {
 
 
     @Autowired
-    private PaisService service;
+    private GeneroService service;
 
 
-    //Lista todos os paises DTO recebidos de PaisService e disponibiliza para o front end
+    //Lista todos os Generoes DTO recebidos de GeneroService e disponibiliza para o front end
     @GetMapping
-    public ResponseEntity<List<PaisDto>> buscarTodos(){
-        List<PaisDto> list = service.findAll();
+    public ResponseEntity<List<GeneroDto>> buscarTodos(){
+        List<GeneroDto> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
 
-    //listar um pais por ID
+    //listar um Genero por ID
     @GetMapping(value = "/{id}")
-    public ResponseEntity<PaisDto> buscarPorId(@PathVariable Long id){
-        PaisDto dto = service.proucurarPorId(id);
+    public ResponseEntity<GeneroDto> buscarPorId(@PathVariable Long id){
+        GeneroDto dto = service.proucurarPorId(id);
         return ResponseEntity.ok().body(dto);
     }
-    //Cadastrar um pais
+    //Cadastrar um Genero
     @PostMapping
-    public ResponseEntity<PaisDto> inserir (@RequestBody PaisDto dto){
+    public ResponseEntity<GeneroDto> inserir (@RequestBody GeneroDto dto){
         dto = service.inserir(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
 
-    //Atualizar um pais
+    //Atualizar um Genero
     @PutMapping(value = "/{id}")
-    public ResponseEntity<PaisDto> atualizar(@PathVariable Long id,@RequestBody PaisDto dto){
+    public ResponseEntity<GeneroDto> atualizar(@PathVariable Long id,@RequestBody GeneroDto dto){
             dto = service.atualizar(id, dto);
             return ResponseEntity.ok().body(dto);
 
     }
 
 
-    //Deletar um pais
+    //Deletar um Genero
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> excluir(@PathVariable Long id){
         service.excluir(id);

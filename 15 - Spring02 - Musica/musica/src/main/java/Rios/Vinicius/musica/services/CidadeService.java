@@ -1,14 +1,13 @@
 package Rios.Vinicius.musica.services;
 
-import Rios.Vinicius.musica.dtos.PaisDto;
-import Rios.Vinicius.musica.entities.Pais;
-import Rios.Vinicius.musica.repositories.PaisRepository;
+import Rios.Vinicius.musica.dtos.CidadeDto;
+import Rios.Vinicius.musica.entities.Cidade;
+import Rios.Vinicius.musica.repositories.CidadeRepository;
 import Rios.Vinicius.musica.services.exceptions.IntegridadeBD;
 import Rios.Vinicius.musica.services.exceptions.RecursoNaoEncontrado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,49 +17,49 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class PaisService {
+public class CidadeService {
 
 
     @Autowired// Injeção de dependencias
-    private PaisRepository repository;
+    private CidadeRepository repository;
 
-    //Listar todos os paises e converte pra DTO
+    //Listar todos os Cidade e converte pra DTO
     @Transactional(readOnly = true)
-    public List<PaisDto> findAll() {
+    public List<CidadeDto> findAll() {
 
-        List<Pais> list = repository.findAll(); //findAll é um SELECT * FROM TABELA_PAIS
+        List<Cidade> list = repository.findAll(); //findAll é um SELECT * FROM TABELA_Cidade
 
-        return list.stream().map(x -> new PaisDto(x)).collect(Collectors.toList()); // pega a lista, converte em novo DTO, coleta e coleta do coletor para outra lista já DTO
+        return list.stream().map(x -> new CidadeDto(x)).collect(Collectors.toList()); // pega a lista, converte em novo DTO, coleta e coleta do coletor para outra lista já DTO
     }
 
-    //listar um pais por ID
+    //listar um Cidade por ID
 
     @Transactional(readOnly = true)
-    public PaisDto proucurarPorId(Long id) {
-        Optional<Pais> objeto = repository.findById(id); //Optional serve para tratar erros
-        Pais entidade = objeto.orElseThrow(() -> new RecursoNaoEncontrado("Este ID não existe no sistema"));
-        return new PaisDto(entidade);
+    public CidadeDto proucurarPorId(Long id) {
+        Optional<Cidade> objeto = repository.findById(id); //Optional serve para tratar erros
+        Cidade entidade = objeto.orElseThrow(() -> new RecursoNaoEncontrado("Este ID não existe no sistema"));
+        return new CidadeDto(entidade);
     }
 
-    //Cadastrar um pais
+    //Cadastrar um Cidade
     @Transactional
-    public PaisDto inserir(PaisDto dto) {
-        Pais entidade = new Pais(); //null null
+    public CidadeDto inserir(CidadeDto dto) {
+        Cidade entidade = new Cidade(); //null null
         entidade.setNome(dto.getNome()); // o id já é gerado direto lá no objeto
         entidade = repository.save(entidade);
 
-        return new PaisDto(entidade);
+        return new CidadeDto(entidade);
     }
 
 
-    //Atualizar um pais
+    //Atualizar um Cidade
     @Transactional
-    public PaisDto atualizar(Long id, PaisDto dto) {
+    public CidadeDto atualizar(Long id, CidadeDto dto) {
         try {
-            Pais entidade = repository.getReferenceById(id); //6
-            entidade.setNome(dto.getNome()); // russia
+            Cidade entidade = repository.getReferenceById(id);
+            entidade.setNome(dto.getNome());
             entidade = repository.save(entidade);
-            return new PaisDto(entidade);
+            return new CidadeDto(entidade);
 
         }
         catch (EntityNotFoundException e){
@@ -69,7 +68,7 @@ public class PaisService {
     }
 
 
-    //Deletar um pais
+    //Deletar um Cidade
 
     public void excluir(Long id) {
 
