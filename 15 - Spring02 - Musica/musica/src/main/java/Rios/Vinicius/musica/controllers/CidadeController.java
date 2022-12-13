@@ -22,7 +22,7 @@ public class CidadeController {
     //Lista todos os Cidadees DTO recebidos de CidadeService e disponibiliza para o front end
     @GetMapping
     public ResponseEntity<List<CidadeDto>> buscarTodos(){
-        List<CidadeDto> list = service.findAll();
+        List<CidadeDto> list = service.procurarTodos();
         return ResponseEntity.ok().body(list);
     }
 

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
+
 @Entity // cria uma tabela pelo Spring
 @Table(name = "tabela_artista") // Renomeia a tabela para tabela_artista
 public class Artista {
@@ -27,20 +29,24 @@ public class Artista {
     @JoinColumn(name = "cidade_id")
     private Cidade cidade;
 
-
-    @OneToMany(mappedBy = "artista")
-    private List<Album> albuns = new ArrayList<>();
-
-
+   @OneToMany(mappedBy = "artista")
+   private List<Album> albuns = new ArrayList<>();
 
 
     public Artista() {
     }
 
-    public Artista(Long id, String nome, boolean banda) {
+    public Artista(Long id) {
+        this.id = id;
+    }
+
+    public Artista(Long id, String nome, boolean banda, Pais pais, Estado estado, Cidade cidade) {
         this.id = id;
         this.nome = nome;
         this.banda = banda;
+        this.pais = pais;
+        this.estado = estado;
+        this.cidade = cidade;
     }
 
     public Long getId() {
@@ -75,13 +81,26 @@ public class Artista {
         return pais;
     }
 
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+
     public Estado getEstado() {
         return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public Cidade getCidade() {
         return cidade;
     }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
+
 
     @Override
     public boolean equals(Object o) {

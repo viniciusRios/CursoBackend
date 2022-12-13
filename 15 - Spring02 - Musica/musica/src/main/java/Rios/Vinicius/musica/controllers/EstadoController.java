@@ -22,7 +22,7 @@ public class EstadoController {
     //Lista todos os Estadoes DTO recebidos de EstadoService e disponibiliza para o front end
     @GetMapping
     public ResponseEntity<List<EstadoDto>> buscarTodos(){
-        List<EstadoDto> list = service.findAll();
+        List<EstadoDto> list = service.procurarTodos();
         return ResponseEntity.ok().body(list);
     }
 

@@ -25,11 +25,9 @@ public class GeneroService {
 
     //Listar todos os Genero e converte pra DTO
     @Transactional(readOnly = true)
-    public List<GeneroDto> findAll() {
-
-        List<Genero> list = repository.findAll(); //findAll é um SELECT * FROM TABELA_Genero
-
-        return list.stream().map(x -> new GeneroDto(x)).collect(Collectors.toList()); // pega a lista, converte em novo DTO, coleta e coleta do coletor para outra lista já DTO
+    public List<GeneroDto> procurarTodos() {
+        List<Genero> list = repository.findAll();
+        return list.stream().map(x -> new GeneroDto(x)).collect(Collectors.toList());
     }
 
     //listar um Genero por ID

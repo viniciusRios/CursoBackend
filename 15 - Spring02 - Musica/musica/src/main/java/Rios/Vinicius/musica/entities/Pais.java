@@ -20,6 +20,10 @@ public class Pais {
     public Pais() {
     }
 
+    public Pais(Long id) {
+        this.id = id;
+    }
+
     public Pais(Long id, String nome) {
         this.id = id;
         this.nome = nome;
@@ -56,7 +60,7 @@ public class Pais {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return id != null ? id.hashCode() : 0;
     }
 
     @Override

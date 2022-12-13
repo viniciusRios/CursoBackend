@@ -1,0 +1,86 @@
+package Rios.Vinicius.musica.services;
+
+import Rios.Vinicius.musica.dtos.ArtistaDto;
+import Rios.Vinicius.musica.entities.Artista;
+import Rios.Vinicius.musica.entities.Cidade;
+import Rios.Vinicius.musica.entities.Estado;
+import Rios.Vinicius.musica.entities.Pais;
+import Rios.Vinicius.musica.repositories.ArtistaRepository;
+import Rios.Vinicius.musica.services.exceptions.IntegridadeBD;
+import Rios.Vinicius.musica.services.exceptions.RecursoNaoEncontrado;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityNotFoundException;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+@Service
+public class ArtistaService {
+
+    @Autowired
+    private ArtistaRepository repository;
+
+    @Transactional(readOnly = true)
+    public List<ArtistaDto> proucurarTodos(){
+        List<Artista> list = repository.findAll();
+        return list.stream().map(x -> new ArtistaDto(x)).collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public ArtistaDto procurarPorId(Long id) {
+        Optional<Artista> objeto = repository.findById(id);
+        Artista entidade = objeto.orElseThrow(() ->
+                new RecursoNaoEncontrado("Este ID não existe em nosso sistema.")
+        );
+        return new ArtistaDto(entidade);
+    }
+
+    @Transactional(readOnly = true)
+    public ArtistaDto inserir (ArtistaDto dto){
+        Artista entidade = new Artista();
+        entidade.setNome(dto.getNome());
+        entidade.setBanda(dto.isBanda());
+        entidade.setPais(new Pais(dto.getPais_id()));
+        entidade.setEstado(new Estado(dto.getEstado_id()));
+        entidade.setCidade(new Cidade(dto.getCidade_id()));
+        entidade = repository.save(entidade);
+        return new ArtistaDto(entidade);
+    }
+
+
+    @Transactional
+    public ArtistaDto atualizar(Long id, ArtistaDto dto) {
+        try {
+            Artista entidade = repository.getReferenceById(id);
+            entidade.setNome(dto.getNome());
+            entidade.setBanda(dto.isBanda());
+            entidade.setPais(new Pais(dto.getPais_id()));
+            entidade.setEstado(new Estado(dto.getEstado_id()));
+            entidade.setCidade(new Cidade(dto.getCidade_id()));
+            entidade = repository.save(entidade);
+            return new ArtistaDto(entidade);
+        }
+        catch (EntityNotFoundException e) {
+            throw new RecursoNaoEncontrado("Id não encontrado: " + id);
+        }
+    }
+
+        public void excluir(Long id){
+            try {
+                repository.deleteById(id);
+            }
+            catch (EmptyResultDataAccessException e) {
+                throw new RecursoNaoEncontrado("Id não encontrado: " + id);
+            }
+            catch (DataIntegrityViolationException e) {
+                throw new IntegridadeBD("Violação de integridade no banco de dados.");
+            }
+        }
+
+
+}

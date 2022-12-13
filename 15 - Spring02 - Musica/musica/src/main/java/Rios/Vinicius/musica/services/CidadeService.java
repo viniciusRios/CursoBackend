@@ -25,11 +25,9 @@ public class CidadeService {
 
     //Listar todos os Cidade e converte pra DTO
     @Transactional(readOnly = true)
-    public List<CidadeDto> findAll() {
-
-        List<Cidade> list = repository.findAll(); //findAll é um SELECT * FROM TABELA_Cidade
-
-        return list.stream().map(x -> new CidadeDto(x)).collect(Collectors.toList()); // pega a lista, converte em novo DTO, coleta e coleta do coletor para outra lista já DTO
+    public List<CidadeDto> procurarTodos() {
+        List<Cidade> list = repository.findAll();
+        return list.stream().map(x -> new CidadeDto(x)).collect(Collectors.toList());
     }
 
     //listar um Cidade por ID

@@ -25,11 +25,9 @@ public class EstadoService {
 
     //Listar todos os estado e converte pra DTO
     @Transactional(readOnly = true)
-    public List<EstadoDto> findAll() {
-
-        List<Estado> list = repository.findAll(); //findAll é um SELECT * FROM TABELA_Estado
-
-        return list.stream().map(x -> new EstadoDto(x)).collect(Collectors.toList()); // pega a lista, converte em novo DTO, coleta e coleta do coletor para outra lista já DTO
+    public List<EstadoDto> procurarTodos() {
+        List<Estado> list = repository.findAll();
+        return list.stream().map(x -> new EstadoDto(x)).collect(Collectors.toList());
     }
 
     //listar um Estado por ID

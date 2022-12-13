@@ -28,10 +28,12 @@ public class Album {
     public Album() {
     }
 
-    public Album(Long id, String titulo, Integer ano) {
+    public Album(Long id, String titulo, Integer ano, Artista artista, Genero genero) {
         this.id = id;
         this.titulo = titulo;
         this.ano = ano;
+        this.artista = artista;
+        this.genero = genero;
     }
 
     public Long getId() {
@@ -61,6 +63,7 @@ public class Album {
     public Integer getAno() {
         return ano;
     }
+
 
     public void setAno(Integer ano) {
         this.ano = ano;

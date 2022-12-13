@@ -22,7 +22,7 @@ public class GeneroController {
     //Lista todos os Generoes DTO recebidos de GeneroService e disponibiliza para o front end
     @GetMapping
     public ResponseEntity<List<GeneroDto>> buscarTodos(){
-        List<GeneroDto> list = service.findAll();
+        List<GeneroDto> list = service.procurarTodos();
         return ResponseEntity.ok().body(list);
     }
 

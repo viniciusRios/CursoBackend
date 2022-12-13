@@ -22,7 +22,7 @@ public class PaisController {
     //Lista todos os paises DTO recebidos de PaisService e disponibiliza para o front end
     @GetMapping
     public ResponseEntity<List<PaisDto>> buscarTodos(){
-        List<PaisDto> list = service.findAll();
+        List<PaisDto> list = service.procurarTodos();
         return ResponseEntity.ok().body(list);
     }
 

@@ -26,12 +26,11 @@ public class PaisService {
 
     //Listar todos os paises e converte pra DTO
     @Transactional(readOnly = true)
-    public List<PaisDto> findAll() {
-
-        List<Pais> list = repository.findAll(); //findAll é um SELECT * FROM TABELA_PAIS
-
-        return list.stream().map(x -> new PaisDto(x)).collect(Collectors.toList()); // pega a lista, converte em novo DTO, coleta e coleta do coletor para outra lista já DTO
-    }
+    public List<PaisDto> procurarTodos() {
+        List<Pais> list = repository.findAll();
+        // Expressão Lambda ou Alta ordem
+        return list.stream().map(x -> new PaisDto(x)).collect(Collectors.toList());
+    } // Retorna uma lista de PaisDto para o Controller
 
     //listar um pais por ID
 
