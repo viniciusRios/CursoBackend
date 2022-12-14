@@ -1,28 +1,33 @@
 package Rios.Vinicius.musica.dtos;
 
 import Rios.Vinicius.musica.entities.Estado;
+import Rios.Vinicius.musica.entities.Festival;
 
 import java.io.Serializable;
+import java.time.Instant;
 
-public class EstadoDto implements Serializable {
+public class FestivalDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
     private String nome;
+    private Instant dataEvento;
 
 
 
-    public EstadoDto() {
+    public FestivalDto() {
     }
 
-    public EstadoDto(Long id, String nome) {
+    public FestivalDto(Long id, String nome, Instant dataEvento) {
         this.id = id;
         this.nome = nome;
+        this.dataEvento = dataEvento;
     }
 
-    public EstadoDto(Estado entidade) {
+    public FestivalDto(Festival entidade) {
         this.id = entidade.getId();
         this.nome = entidade.getNome();
+        this.dataEvento = entidade.getDataEvento();
     }
 
     public Long getId() {
@@ -40,4 +45,13 @@ public class EstadoDto implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public Instant getDataEvento() {
+        return dataEvento;
+    }
+
+    public void setDataEvento(Instant dataEvento) {
+        this.dataEvento = dataEvento;
+    }
+
 }

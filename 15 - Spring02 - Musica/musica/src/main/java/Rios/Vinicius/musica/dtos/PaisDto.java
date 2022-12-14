@@ -2,7 +2,10 @@ package Rios.Vinicius.musica.dtos;
 
 import Rios.Vinicius.musica.entities.Pais;
 
-public class PaisDto {
+import java.io.Serializable;
+
+public class PaisDto implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private Long id;
     private String nome;

@@ -1,14 +1,15 @@
 package Rios.Vinicius.musica.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity // cria uma tabela pelo Spring
 @Table(name = "tabela_album") // Renomeia a tabela
-public class Album {
-
+public class Album implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id // campo definido como chave primaria
     @GeneratedValue(strategy =  GenerationType.IDENTITY) // gera o valor (pacote strategy que gera a identificação automatico - AutoIncremento)
     private Long id;

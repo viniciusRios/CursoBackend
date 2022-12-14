@@ -3,7 +3,10 @@ package Rios.Vinicius.musica.dtos;
 import Rios.Vinicius.musica.entities.Artista;
 import Rios.Vinicius.musica.entities.Pais;
 
-public class ArtistaDto {
+import java.io.Serializable;
+
+public class ArtistaDto implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private Long id;
     private String nome;

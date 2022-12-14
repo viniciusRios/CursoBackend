@@ -1,12 +1,14 @@
 package Rios.Vinicius.musica.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.*;
 
 @Entity
-@Table(name = "tabela_estado")
-public class Festival {
+@Table(name = "tabela_festival")
+public class Festival implements Serializable {
+    private static final long serialVersionUID = 1L;
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
