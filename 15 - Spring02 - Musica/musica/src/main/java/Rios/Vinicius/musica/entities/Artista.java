@@ -31,6 +31,10 @@ public class Artista implements Serializable {
     @JoinColumn(name = "cidade_id")
     private Cidade cidade;
 
+    @ManyToOne
+    @JoinColumn(name = "genero_id")
+    private Genero genero;
+
    @OneToMany(mappedBy = "artista")
    private List<Album> albuns = new ArrayList<>();
 
@@ -42,13 +46,14 @@ public class Artista implements Serializable {
         this.id = id;
     }
 
-    public Artista(Long id, String nome, boolean banda, Pais pais, Estado estado, Cidade cidade) {
+    public Artista(Long id, String nome, boolean banda, Pais pais, Estado estado, Cidade cidade, Genero genero) {
         this.id = id;
         this.nome = nome;
         this.banda = banda;
         this.pais = pais;
         this.estado = estado;
         this.cidade = cidade;
+        this.genero = genero;
     }
 
     public Long getId() {
@@ -103,6 +108,13 @@ public class Artista implements Serializable {
         this.cidade = cidade;
     }
 
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
 
     @Override
     public boolean equals(Object o) {

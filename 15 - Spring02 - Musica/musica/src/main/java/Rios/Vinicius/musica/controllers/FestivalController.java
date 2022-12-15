@@ -1,8 +1,9 @@
 package Rios.Vinicius.musica.controllers;
 
 import Rios.Vinicius.musica.dtos.ArtistaDto;
+import Rios.Vinicius.musica.dtos.FestivalDto;
 import Rios.Vinicius.musica.services.ArtistaService;
-import Rios.Vinicius.musica.services.exceptions.RecursoNaoEncontrado;
+import Rios.Vinicius.musica.services.FestivalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,34 +13,33 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/artistas")
-public class ArtistaController {
+@RequestMapping(value = "/festivais")
+public class FestivalController {
 
     @Autowired
-    private ArtistaService service;
-
+    private FestivalService service;
 
     @GetMapping
-    public ResponseEntity<List<ArtistaDto>> buscarTodos() {
-        List<ArtistaDto> list = service.proucurarTodos();
+    public ResponseEntity<List<FestivalDto>> buscarTodos() {
+        List<FestivalDto> list = service.proucurarTodos();
         return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<ArtistaDto> buscarPorId(@PathVariable Long id) {
-        ArtistaDto dto = service.procurarPorId(id);
+    public ResponseEntity<FestivalDto> buscarPorId(@PathVariable Long id) {
+        FestivalDto dto = service.procurarPorId(id);
         return ResponseEntity.ok().body(dto);
     }
 
     @PostMapping
-    public ResponseEntity<ArtistaDto> inserir(@RequestBody ArtistaDto dto) {
+    public ResponseEntity<FestivalDto> inserir(@RequestBody FestivalDto dto) {
         dto = service.inserir(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ArtistaDto> atualizar(@PathVariable Long id, @RequestBody ArtistaDto dto) {
+    public ResponseEntity<FestivalDto> atualizar(@PathVariable Long id, @RequestBody FestivalDto dto) {
         dto = service.atualizar(id, dto);
         return ResponseEntity.ok().body(dto);
     }

@@ -14,11 +14,11 @@ public class Festival implements Serializable {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
         private String nome;
-        private Instant dataEvento;
+        private String dataEvento;
         // Atenção ao atributo no DB = data_evento
 
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "tabela_festival_artista",
             joinColumns = @JoinColumn(name = "festival_id"),
             inverseJoinColumns = @JoinColumn(name = "artista_id"))
@@ -27,7 +27,7 @@ public class Festival implements Serializable {
     public Festival() {
     }
 
-    public Festival(Long id, String nome, Instant dataEvento) {
+    public Festival(Long id, String nome, String dataEvento) {
         this.id = id;
         this.nome = nome;
         this.dataEvento = dataEvento;
@@ -49,12 +49,16 @@ public class Festival implements Serializable {
         this.nome = nome;
     }
 
-    public Instant getDataEvento() {
+    public String getDataEvento() {
         return dataEvento;
     }
 
-    public void setDataEvento(Instant dataEvento) {
+    public void setDataEvento(String dataEvento) {
         this.dataEvento = dataEvento;
+    }
+
+    public Set<Artista> getArtistas() {
+        return artistas;
     }
 
     @Override

@@ -19,6 +19,10 @@ public class Genero implements Serializable {
     @OneToMany(mappedBy = "genero")
     private List<Album> albuns = new ArrayList<>();
 
+    @OneToMany(mappedBy = "genero")
+    private List<Artista> artistas = new ArrayList<>();
+
+
 
     public Genero() {
     }
@@ -47,6 +51,7 @@ public class Genero implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
 
     public List<Album> getAlbuns() {
         return albuns;

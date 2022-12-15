@@ -1,10 +1,7 @@
 package Rios.Vinicius.musica.services;
 
 import Rios.Vinicius.musica.dtos.ArtistaDto;
-import Rios.Vinicius.musica.entities.Artista;
-import Rios.Vinicius.musica.entities.Cidade;
-import Rios.Vinicius.musica.entities.Estado;
-import Rios.Vinicius.musica.entities.Pais;
+import Rios.Vinicius.musica.entities.*;
 import Rios.Vinicius.musica.repositories.ArtistaRepository;
 import Rios.Vinicius.musica.services.exceptions.IntegridadeBD;
 import Rios.Vinicius.musica.services.exceptions.RecursoNaoEncontrado;
@@ -48,6 +45,7 @@ public class ArtistaService {
         entidade.setPais(new Pais(dto.getPais_id()));
         entidade.setEstado(new Estado(dto.getEstado_id()));
         entidade.setCidade(new Cidade(dto.getCidade_id()));
+        entidade.setGenero(new Genero(dto.getGenero_id()));
         entidade = repository.save(entidade);
         return new ArtistaDto(entidade);
     }
@@ -62,6 +60,7 @@ public class ArtistaService {
             entidade.setPais(new Pais(dto.getPais_id()));
             entidade.setEstado(new Estado(dto.getEstado_id()));
             entidade.setCidade(new Cidade(dto.getCidade_id()));
+            entidade.setGenero(new Genero(dto.getGenero_id()));
             entidade = repository.save(entidade);
             return new ArtistaDto(entidade);
         }
