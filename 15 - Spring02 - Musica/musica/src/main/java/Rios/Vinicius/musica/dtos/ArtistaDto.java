@@ -1,9 +1,12 @@
 package Rios.Vinicius.musica.dtos;
 
+import Rios.Vinicius.musica.entities.Album;
 import Rios.Vinicius.musica.entities.Artista;
 import Rios.Vinicius.musica.entities.Pais;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ArtistaDto implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -15,6 +18,8 @@ public class ArtistaDto implements Serializable {
     private Long estado_id;
     private Long cidade_id;
     private Long genero_id;
+    private List<AlbumDto> albuns = new ArrayList<>();
+
 
 
 
@@ -39,6 +44,11 @@ public class ArtistaDto implements Serializable {
         this.estado_id = entidade.getEstado().getId();
         this.cidade_id = entidade.getCidade().getId();
         this.genero_id = entidade.getGenero().getId();
+    }
+
+    public ArtistaDto( Artista entidade, List<Album> albuns){
+        this(entidade);
+        albuns.forEach(alb -> this.albuns.add(new AlbumDto(alb)));
     }
 
     public Long getId() {
@@ -95,5 +105,9 @@ public class ArtistaDto implements Serializable {
 
     public void setGenero_id(Long genero_id) {
         this.genero_id = genero_id;
+    }
+
+    public List<AlbumDto> getAlbuns() {
+        return albuns;
     }
 }

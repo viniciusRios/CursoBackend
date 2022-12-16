@@ -28,6 +28,8 @@ public class ArtistaService {
         return list.stream().map(x -> new ArtistaDto(x)).collect(Collectors.toList());
     }
 
+
+
     @Transactional(readOnly = true)
     public ArtistaDto procurarPorId(Long id) {
         Optional<Artista> objeto = repository.findById(id);
@@ -35,6 +37,15 @@ public class ArtistaService {
                 new RecursoNaoEncontrado("Este ID não existe em nosso sistema.")
         );
         return new ArtistaDto(entidade);
+    }
+
+    @Transactional(readOnly = true)
+    public ArtistaDto procurarPorIdComAlbuns(Long id) {
+        Optional<Artista> objeto = repository.findById(id);
+        Artista entidade = objeto.orElseThrow(() ->
+                new RecursoNaoEncontrado("Este ID não existe em nosso sistema.")
+        );
+        return new ArtistaDto(entidade, entidade.getAlbuns());
     }
 
     @Transactional(readOnly = true)

@@ -14,7 +14,7 @@ public class Festival implements Serializable {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
         private String nome;
-        private String dataEvento;
+        private Instant dataEvento;
         // Atenção ao atributo no DB = data_evento
 
 
@@ -27,7 +27,7 @@ public class Festival implements Serializable {
     public Festival() {
     }
 
-    public Festival(Long id, String nome, String dataEvento) {
+    public Festival(Long id, String nome, Instant dataEvento) {
         this.id = id;
         this.nome = nome;
         this.dataEvento = dataEvento;
@@ -49,11 +49,11 @@ public class Festival implements Serializable {
         this.nome = nome;
     }
 
-    public String getDataEvento() {
+    public Instant getDataEvento() {
         return dataEvento;
     }
 
-    public void setDataEvento(String dataEvento) {
+    public void setDataEvento(Instant dataEvento) {
         this.dataEvento = dataEvento;
     }
 
