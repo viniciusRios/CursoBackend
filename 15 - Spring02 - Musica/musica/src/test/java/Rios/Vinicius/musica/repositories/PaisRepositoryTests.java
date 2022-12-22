@@ -1,6 +1,6 @@
 package Rios.Vinicius.musica.repositories;
 
-import Rios.Vinicius.musica.entities.Cidade;
+import Rios.Vinicius.musica.entities.Pais;
 import Rios.Vinicius.musica.test.Factory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,30 +14,30 @@ import java.util.List;
 import java.util.Optional;
 
 @DataJpaTest
-public class CidadeRepositoryTests {
+public class PaisRepositoryTests {
 
     @Autowired
-    private CidadeRepository repository;
+    private PaisRepository repository;
 
     private Long idExistente;
     private Long idNaoExistente;
-    private Long contagemTotalDeCidades;
-    private List<Cidade> cidadeList = new ArrayList<>();
+    private Long contagemTotalDePaises;
+    private List<Pais> paisList = new ArrayList<>();
 
     @BeforeEach
     void Setup() throws Exception{
 
         idExistente = 1L;
         idNaoExistente = 999L;
-        contagemTotalDeCidades = 6L;
+        contagemTotalDePaises = 5L;
 
     }
 
     @Test
     public void deleteDeveriaExcluirOObjetoQaundoOIdExistir() {
         repository.deleteById(idExistente);
-        Optional<Cidade> resultado = repository.findById(idExistente);
-        Assertions.assertFalse(resultado.isPresent());// Existe um objeto "Cidade" dentro de resultado gravado na linha de cima
+        Optional<Pais> resultado = repository.findById(idExistente);
+        Assertions.assertFalse(resultado.isPresent());// Existe um objeto "Pais" dentro de resultado gravado na linha de cima
 
     }
     @Test
@@ -51,29 +51,29 @@ public class CidadeRepositoryTests {
 
     @Test
     public void saveDeveriaPersistirComAutoincrementoQuandoOIdForNulo(){
-        Cidade cidade = Factory.criarCidade();
-        cidade.setId(null);
-        cidade = repository.save(cidade);
-        Assertions.assertNotNull(cidade.getId());
-        Assertions.assertEquals(contagemTotalDeCidades+1, cidade.getId());
+        Pais pais = Factory.criarPais();
+        pais.setId(null);
+        pais = repository.save(pais);
+        Assertions.assertNotNull(pais.getId());
+        Assertions.assertEquals(contagemTotalDePaises+1, pais.getId());
     }
 
     @Test
     public void findAllDeveriaRetornarUmaListaDeObjetos(){
-        cidadeList = repository.findAll();
-        Assertions.assertNotNull(cidadeList);
+        paisList = repository.findAll();
+        Assertions.assertNotNull(paisList);
     }
 
     @Test
     public void findByIdDeveriaRetornarUmOptionalComUmObjeto(){
 
-        Optional <Cidade> resultado = repository.findById(idExistente);
+        Optional <Pais> resultado = repository.findById(idExistente);
         Assertions.assertTrue(resultado.isPresent());
     }
 
     @Test
     public void findByIdDeveriaRetornarUmOptionalVazio(){
-        Optional<Cidade> resultado = repository.findById(idNaoExistente);
+        Optional<Pais> resultado = repository.findById(idNaoExistente);
     }
 
 
