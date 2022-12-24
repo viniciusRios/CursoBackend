@@ -33,7 +33,7 @@ public class CidadeService {
     //listar um Cidade por ID
 
     @Transactional(readOnly = true)
-    public CidadeDto proucurarPorId(Long id) {
+    public CidadeDto procurarPorId(Long id) {
         Optional<Cidade> objeto = repository.findById(id); //Optional serve para tratar erros
         Cidade entidade = objeto.orElseThrow(() -> new RecursoNaoEncontrado("Este ID não existe no sistema"));
         return new CidadeDto(entidade);

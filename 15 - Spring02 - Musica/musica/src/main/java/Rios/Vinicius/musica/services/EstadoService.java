@@ -33,7 +33,7 @@ public class EstadoService {
     //listar um Estado por ID
 
     @Transactional(readOnly = true)
-    public EstadoDto proucurarPorId(Long id) {
+    public EstadoDto procurarPorId(Long id) {
         Optional<Estado> objeto = repository.findById(id); //Optional serve para tratar erros
         Estado entidade = objeto.orElseThrow(() -> new RecursoNaoEncontrado("Este ID não existe no sistema"));
         return new EstadoDto(entidade);

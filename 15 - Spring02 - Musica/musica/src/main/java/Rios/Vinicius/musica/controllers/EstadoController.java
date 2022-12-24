@@ -29,7 +29,7 @@ public class EstadoController {
     //listar um Estado por ID
     @GetMapping(value = "/{id}")
     public ResponseEntity<EstadoDto> buscarPorId(@PathVariable Long id){
-        EstadoDto dto = service.proucurarPorId(id);
+        EstadoDto dto = service.procurarPorId(id);
         return ResponseEntity.ok().body(dto);
     }
     //Cadastrar um Estado

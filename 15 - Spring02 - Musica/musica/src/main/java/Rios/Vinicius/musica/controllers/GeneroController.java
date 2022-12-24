@@ -29,7 +29,7 @@ public class GeneroController {
     //listar um Genero por ID
     @GetMapping(value = "/{id}")
     public ResponseEntity<GeneroDto> buscarPorId(@PathVariable Long id){
-        GeneroDto dto = service.proucurarPorId(id);
+        GeneroDto dto = service.procurarPorId(id);
         return ResponseEntity.ok().body(dto);
     }
     //Cadastrar um Genero

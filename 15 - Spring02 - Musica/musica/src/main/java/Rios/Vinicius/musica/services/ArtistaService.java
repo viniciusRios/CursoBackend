@@ -23,7 +23,7 @@ public class ArtistaService {
     private ArtistaRepository repository;
 
     @Transactional(readOnly = true)
-    public List<ArtistaDto> proucurarTodos(){
+    public List<ArtistaDto> procurarTodos(){
         List<Artista> list = repository.findAll();
         return list.stream().map(x -> new ArtistaDto(x)).collect(Collectors.toList());
     }

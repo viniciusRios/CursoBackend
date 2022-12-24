@@ -29,7 +29,7 @@ public class PaisController {
     //listar um pais por ID
     @GetMapping(value = "/{id}")
     public ResponseEntity<PaisDto> buscarPorId(@PathVariable Long id){
-        PaisDto dto = service.proucurarPorId(id);
+        PaisDto dto = service.procurarPorId(id);
         return ResponseEntity.ok().body(dto);
     }
     //Cadastrar um pais

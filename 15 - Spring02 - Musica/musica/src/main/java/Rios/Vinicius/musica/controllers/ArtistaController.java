@@ -21,7 +21,7 @@ public class ArtistaController {
 
     @GetMapping
     public ResponseEntity<List<ArtistaDto>> buscarTodos() {
-        List<ArtistaDto> list = service.proucurarTodos();
+        List<ArtistaDto> list = service.procurarTodos();
         return ResponseEntity.ok().body(list);
     }
 

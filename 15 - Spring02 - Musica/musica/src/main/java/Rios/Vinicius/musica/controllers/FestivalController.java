@@ -21,7 +21,7 @@ public class FestivalController {
 
     @GetMapping
     public ResponseEntity<List<FestivalDto>> buscarTodos() {
-        List<FestivalDto> list = service.proucurarTodos();
+        List<FestivalDto> list = service.procurarTodos();
         return ResponseEntity.ok().body(list);
     }
 

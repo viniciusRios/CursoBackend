@@ -33,7 +33,7 @@ public class GeneroService {
     //listar um Genero por ID
 
     @Transactional(readOnly = true)
-    public GeneroDto proucurarPorId(Long id) {
+    public GeneroDto procurarPorId(Long id) {
         Optional<Genero> objeto = repository.findById(id); //Optional serve para tratar erros
         Genero entidade = objeto.orElseThrow(() -> new RecursoNaoEncontrado("Este ID não existe no sistema"));
         return new GeneroDto(entidade);

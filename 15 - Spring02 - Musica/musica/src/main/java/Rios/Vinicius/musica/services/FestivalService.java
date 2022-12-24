@@ -27,8 +27,8 @@ public class FestivalService {
     @Autowired
     private ArtistaRepository artistaRepository;
 
-    @Transactional(readOnly = true) //Proucurar todos festivais
-    public List<FestivalDto> proucurarTodos(){
+    @Transactional(readOnly = true) //Procurar todos festivais
+    public List<FestivalDto> procurarTodos(){
         List<Festival> list = repository.findAll();
         return list.stream().map(x -> new FestivalDto(x, x.getArtistas())).collect(Collectors.toList());
     }

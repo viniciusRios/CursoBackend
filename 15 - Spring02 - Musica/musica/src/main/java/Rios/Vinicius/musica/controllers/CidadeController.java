@@ -29,7 +29,7 @@ public class CidadeController {
     //listar um Cidade por ID
     @GetMapping(value = "/{id}")
     public ResponseEntity<CidadeDto> buscarPorId(@PathVariable Long id){
-        CidadeDto dto = service.proucurarPorId(id);
+        CidadeDto dto = service.procurarPorId(id);
         return ResponseEntity.ok().body(dto);
     }
     //Cadastrar um Cidade

@@ -35,7 +35,7 @@ public class PaisService {
     //listar um pais por ID
 
     @Transactional(readOnly = true)
-    public PaisDto proucurarPorId(Long id) {
+    public PaisDto procurarPorId(Long id) {
         Optional<Pais> objeto = repository.findById(id); //Optional serve para tratar erros
         Pais entidade = objeto.orElseThrow(() -> new RecursoNaoEncontrado("Este ID não existe no sistema"));
         return new PaisDto(entidade);
