@@ -1,18 +1,15 @@
-package br.com.sisnema.mongoDB.Services.impl;
+package br.com.sisnema.mongoDB.services.impl;
 
-import br.com.sisnema.mongoDB.Services.FuncionarioService;
-import br.com.sisnema.mongoDB.Services.SetorService;
 import br.com.sisnema.mongoDB.entities.Funcionario;
-import br.com.sisnema.mongoDB.entities.Setor;
 import br.com.sisnema.mongoDB.repositories.FuncionarioRepository;
-import br.com.sisnema.mongoDB.repositories.SetorRepository;
+import br.com.sisnema.mongoDB.services.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class FuncionarioServiceImpl implements FuncionarioService{
+public class FuncionarioServiceImpl implements FuncionarioService {
 
     @Autowired
     private FuncionarioRepository repository;
@@ -29,7 +26,8 @@ public class FuncionarioServiceImpl implements FuncionarioService{
 
     @Override
     public Funcionario obterPorCodigo(String codigo) {
-        return this.repository.findById(codigo).orElseThrow(()-> new IllegalArgumentException("Setor Nulo ou Inexistente"));
+        return this.repository.findById(codigo).orElseThrow(
+                () -> new IllegalArgumentException("Funcionário nulo ou inexistente.")
+        );
     }
-
 }

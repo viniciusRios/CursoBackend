@@ -1,4 +1,4 @@
-package br.com.sisnema.mongoDB.Services;
+package br.com.sisnema.mongoDB.services;
 
 import br.com.sisnema.mongoDB.entities.Funcionario;
 

@@ -17,6 +17,7 @@ import org.mockito.Mockito;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.web.servlet.ResultActions;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
@@ -130,6 +131,19 @@ public class PaisServiceTest {
         });
         Mockito.verify(repository, times(1)).deleteById(idChaveEstrangeira);
     }
+
+    @Test
+    public void inserirDeveriaRetornarUm201Dto() throws Exception{
+
+    }
+
+    @Test
+    public void procurarTodosDeveriaRetornarUmaLista() throws Exception{
+
+
+    }
+
+
 }
 
 

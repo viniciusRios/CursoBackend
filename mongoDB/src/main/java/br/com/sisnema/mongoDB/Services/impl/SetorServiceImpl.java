@@ -1,8 +1,8 @@
-package br.com.sisnema.mongoDB.Services.impl;
+package br.com.sisnema.mongoDB.services.impl;
 
-import br.com.sisnema.mongoDB.Services.SetorService;
 import br.com.sisnema.mongoDB.entities.Setor;
 import br.com.sisnema.mongoDB.repositories.SetorRepository;
+import br.com.sisnema.mongoDB.services.SetorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,6 @@ import java.util.List;
 
 @Service
 public class SetorServiceImpl implements SetorService {
-
 
     @Autowired
     private SetorRepository repository;
@@ -27,7 +26,8 @@ public class SetorServiceImpl implements SetorService {
 
     @Override
     public Setor obterPorCodigo(String codigo) {
-        return this.repository.findById(codigo).orElseThrow(()-> new IllegalArgumentException("Setor Nulo ou Inexistente"));
+        return this.repository.findById(codigo).orElseThrow(
+                () -> new IllegalArgumentException("Setor nulo ou inexistente.")
+        );
     }
-
 }

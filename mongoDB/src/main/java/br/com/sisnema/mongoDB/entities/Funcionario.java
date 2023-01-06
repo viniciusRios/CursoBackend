@@ -8,20 +8,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Funcionario {
 
     @Id
-    private String id;
+    private String codigo;
     private String nome;
     private Integer idade;
     private Double salario;
     @DBRef
     private Setor setor;
 
-
-    public String getId() {
-        return id;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getNome() {
