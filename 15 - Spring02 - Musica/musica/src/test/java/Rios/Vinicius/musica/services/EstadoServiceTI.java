@@ -31,9 +31,9 @@ public class EstadoServiceTI {
 
     @BeforeEach
     void Setup() throws Exception {
-        idExistente = 3L;
+        idExistente = 7L;
         idNaoExistente = 999L;
-        contagemTotalDeEstados = 6L;
+        contagemTotalDeEstados = 7L;
         estadoDto = Factory.criarEstadoDto();
     }
 

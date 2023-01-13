@@ -2,6 +2,7 @@ package Rios.Vinicius.musica.repositories;
 
 import Rios.Vinicius.musica.entities.Cidade;
 import Rios.Vinicius.musica.test.Factory;
+import net.minidev.json.JSONUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,62 +25,59 @@ public class CidadeRepositoryTests {
     private Long contagemTotalDeCidades;
     private List<Cidade> cidadeList = new ArrayList<>();
 
-    @BeforeEach
-    void Setup() throws Exception{
 
+    @BeforeEach
+    void Setup() throws Exception {
         idExistente = 1L;
         idNaoExistente = 999L;
-        contagemTotalDeCidades = 6L;
-
+        contagemTotalDeCidades = 7L;
+        System.out.println("pós Seeding :" +contagemTotalDeCidades);
     }
 
     @Test
-    public void deleteDeveriaExcluirOObjetoQaundoOIdExistir() {
-        repository.deleteById(idExistente);
-        Optional<Cidade> resultado = repository.findById(idExistente);
-        Assertions.assertFalse(resultado.isPresent());// Existe um objeto "Cidade" dentro de resultado gravado na linha de cima
-
-    }
-    @Test
-    public void deleteDeveriaLancarExcecaoSeOIdNaoExistir() {
-
-          Assertions.assertThrows(EmptyResultDataAccessException.class, () -> {
-            repository.deleteById(idNaoExistente);
-            });
-//
-    }
-
-    @Test
-    public void saveDeveriaPersistirComAutoincrementoQuandoOIdForNulo(){
+    public void saveDeveriaPersistirComAutoincrementoQuandoOIdForNulo() {
         Cidade cidade = Factory.criarCidade();
         cidade.setId(null);
         cidade = repository.save(cidade);
         Assertions.assertNotNull(cidade.getId());
-        Assertions.assertEquals(contagemTotalDeCidades+1, cidade.getId());
+        System.out.println("pós CriarCidade e Pós Save Cidade :" +contagemTotalDeCidades);
+        Assertions.assertEquals(contagemTotalDeCidades + 1, cidade.getId());
     }
 
+
     @Test
-    public void findAllDeveriaRetornarUmaListaDeObjetos(){
+    public void findAllDeveriaRetornarUmaListaDeObjetos() {
         cidadeList = repository.findAll();
         Assertions.assertNotNull(cidadeList);
     }
 
     @Test
-    public void findByIdDeveriaRetornarUmOptionalComUmObjeto(){
-
-        Optional <Cidade> resultado = repository.findById(idExistente);
+    public void findByIdDeveriaRetornarUmOptionalComUmObjeto() {
+        Optional<Cidade> resultado = repository.findById(idExistente); // 1L
         Assertions.assertTrue(resultado.isPresent());
     }
 
     @Test
-    public void findByIdDeveriaRetornarUmOptionalVazio(){
-        Optional<Cidade> resultado = repository.findById(idNaoExistente);
+    public void findByIdDeveriaRetornarUmOptionalVazio() {
+        Optional<Cidade> resultado = repository.findById(idNaoExistente); // 999L
+        Assertions.assertTrue(resultado.isEmpty());
     }
 
+    @Test
+    public void deleteByIdDeveriaExcluirOObjetoQuandoOIdExistir() {
+        repository.deleteById(idExistente);
+        Optional<Cidade> resultado = repository.findById(idExistente);
+        Assertions.assertFalse(resultado.isPresent()); // Cidade
+        // Existe um objeto cidade aqui dentro?
+    }
 
+    @Test
+    public void deleteByIdDeveriaLancarExcecaoSeOIdENaoxistir() {
+        Assertions.assertThrows(EmptyResultDataAccessException.class, () -> {
+            repository.deleteById(idNaoExistente);
+        });
+    }
 }
-
-
 
 
 

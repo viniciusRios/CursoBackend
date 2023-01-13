@@ -29,7 +29,7 @@ public class EstadoRepositoryTests {
 
         idExistente = 1L;
         idNaoExistente = 999L;
-        contagemTotalDeEstados = 6L;
+        contagemTotalDeEstados = 7L;
     }
 
     @Test

@@ -44,7 +44,7 @@ public class AlbumServiceTI {
     }
 
     @Test
-    public void procurarPorIdDeveriaRetornarQuandoOIdExistir(){
+    public void procurarPorIdDeveriaRetornarUmDtoQuandoOIdExistir(){
         AlbumDto resultado = service.procurarPorId(idExistente);
         Assertions.assertNotNull(resultado);
     }

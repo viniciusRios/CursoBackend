@@ -31,9 +31,9 @@ public class CidadeServiceTI {
 
     @BeforeEach
     void Setup() throws Exception {
-        idExistente = 5L;
+        idExistente = 7L;
         idNaoExistente = 999L;
-        contagemTotalDeCidades = 6L;
+        contagemTotalDeCidades = 7L;
         cidadeDto = Factory.criarCidadeDto();
     }
 

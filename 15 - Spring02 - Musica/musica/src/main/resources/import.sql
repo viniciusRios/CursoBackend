@@ -1,3 +1,17 @@
+INSERT INTO tabela_funcao (autoridade) VALUES ('ROLE_ADMIN');
+INSERT INTO tabela_funcao (autoridade) VALUES ('ROLE_OPERATOR');
+
+INSERT INTO tabela_usuario (nome, sobrenome, email, senha) VALUES ('Airton','senna','senna@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG' );
+INSERT INTO tabela_usuario (nome, sobrenome, email, senha) VALUES ('Alain','Prost','prost@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tabela_usuario (nome, sobrenome, email, senha) VALUES ('Rubens','Barrichello','rb@gmail.com','$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+
+
+INSERT INTO tabela_usuario_funcao (usuario_id, funcao_id) VALUES (1L,1L);
+INSERT INTO tabela_usuario_funcao (usuario_id, funcao_id) VALUES (1L,2L);
+INSERT INTO tabela_usuario_funcao (usuario_id, funcao_id) VALUES (2L,2L);
+INSERT INTO tabela_usuario_funcao (usuario_id, funcao_id) VALUES (3L,2L);
+
+
 INSERT INTO tabela_pais (nome) VALUES ('Estados Unidos');
 INSERT INTO tabela_pais (nome) VALUES ('Brasil');
 INSERT INTO tabela_pais (nome) VALUES ('Inglaterra');
@@ -10,6 +24,7 @@ INSERT INTO tabela_estado (nome) VALUES ('Rio Grande do Sul');
 INSERT INTO tabela_estado (nome) VALUES ('São Paulo');
 INSERT INTO tabela_estado (nome) VALUES ('Rio de Janeiro');
 INSERT INTO tabela_estado (nome) VALUES ('Washington');
+INSERT INTO tabela_estado (nome) VALUES ('Minas Gerais');
 
 INSERT INTO tabela_cidade (nome) VALUES ('Los Angeles');
 INSERT INTO tabela_cidade (nome) VALUES ('Leyton');
@@ -17,6 +32,7 @@ INSERT INTO tabela_cidade (nome) VALUES ('Porto Alegre');
 INSERT INTO tabela_cidade (nome) VALUES ('São Paulo');
 INSERT INTO tabela_cidade (nome) VALUES ('Rio de Janeiro');
 INSERT INTO tabela_cidade (nome) VALUES ('Seattle');
+INSERT INTO tabela_cidade (nome) VALUES ('Laguna');
 
 INSERT INTO tabela_genero (nome) VALUES ('Rock');
 INSERT INTO tabela_genero (nome) VALUES ('Rock Progressivo');
@@ -31,6 +47,7 @@ INSERT INTO tabela_genero (nome) VALUES ('Intrumental');
 INSERT INTO tabela_artista (nome, banda, pais_id, estado_id, cidade_id, genero_id) VALUES ('Metallica', true, 1, 1, 1, 4);
 INSERT INTO tabela_artista (nome, banda, pais_id, estado_id, cidade_id, genero_id) VALUES ('Iron Maiden', true, 3, 2, 2, 3);
 INSERT INTO tabela_artista (nome, banda, pais_id, estado_id, cidade_id, genero_id) VALUES ('Pearl Jam', true, 1, 6, 6, 1);
+INSERT INTO tabela_artista (nome, banda, pais_id, estado_id, cidade_id, genero_id) VALUES ('Molotov', true, 5, 6, 6, 1);
 
 INSERT INTO tabela_festival (nome, data_evento) VALUES ('Rock In Rio', TIMESTAMP WITH TIME ZONE '2023-07-13T20:00:07Z');
 INSERT INTO tabela_festival (nome, data_evento) VALUES ('Fuji Rock Festival', TIMESTAMP WITH TIME ZONE '2023-07-13T20:00:07Z');
@@ -86,3 +103,4 @@ INSERT INTO tabela_album (titulo, ano, artista_id, genero_id) VALUES ('Pearl Jam
 INSERT INTO tabela_album (titulo, ano, artista_id, genero_id) VALUES ('Backspacer', 2009, 3, 1);
 INSERT INTO tabela_album (titulo, ano, artista_id, genero_id) VALUES ('Lightning Bolt', 2013, 3, 1);
 INSERT INTO tabela_album (titulo, ano, artista_id, genero_id) VALUES ('Gigaton', 2020, 3, 1);
+

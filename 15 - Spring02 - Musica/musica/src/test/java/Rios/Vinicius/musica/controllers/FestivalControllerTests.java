@@ -47,7 +47,7 @@ public class FestivalControllerTests {
          idExistente = 1L;
           idNaoExistente = 2L;
           idChaveExtrangeira = 3L;
-          festivalDto = FactoryFK.criaFestivalDto();
+          festivalDto = FactoryFK.criarFestivalDto();
           festivalDtoList = new ArrayList<>();
 
         when(service.procurarTodos()).thenReturn(festivalDtoList);

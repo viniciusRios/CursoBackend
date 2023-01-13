@@ -29,7 +29,7 @@ public class ArtistaRepositoryTests {
 
         idExistente = 1L;
         idNaoExistente = 999L;
-        contagemTotalDeArtistas = 3L;
+        contagemTotalDeArtistas = 4L;
 
     }
 

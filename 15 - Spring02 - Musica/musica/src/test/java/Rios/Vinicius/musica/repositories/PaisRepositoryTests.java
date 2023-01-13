@@ -33,21 +33,7 @@ public class PaisRepositoryTests {
 
     }
 
-    @Test
-    public void deleteDeveriaExcluirOObjetoQaundoOIdExistir() {
-        repository.deleteById(idExistente);
-        Optional<Pais> resultado = repository.findById(idExistente);
-        Assertions.assertFalse(resultado.isPresent());// Existe um objeto "Pais" dentro de resultado gravado na linha de cima
 
-    }
-    @Test
-    public void deleteDeveriaLancarExcecaoSeOIdNaoExistir() {
-
-          Assertions.assertThrows(EmptyResultDataAccessException.class, () -> {
-            repository.deleteById(idNaoExistente);
-            });
-//
-    }
 
     @Test
     public void saveDeveriaPersistirComAutoincrementoQuandoOIdForNulo(){
@@ -76,6 +62,21 @@ public class PaisRepositoryTests {
         Optional<Pais> resultado = repository.findById(idNaoExistente);
     }
 
+    @Test
+    public void deleteDeveriaExcluirOObjetoQaundoOIdExistir() {
+        repository.deleteById(idExistente);
+        Optional<Pais> resultado = repository.findById(idExistente);
+        Assertions.assertFalse(resultado.isPresent());// Existe um objeto "Pais" dentro de resultado gravado na linha de cima
+
+    }
+    @Test
+    public void deleteDeveriaLancarExcecaoSeOIdNaoExistir() {
+
+        Assertions.assertThrows(EmptyResultDataAccessException.class, () -> {
+            repository.deleteById(idNaoExistente);
+        });
+//
+    }
 
 }
 

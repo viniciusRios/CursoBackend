@@ -41,7 +41,7 @@ public class FactoryFK {
         Festival festival = new Festival(1L, "Atlantida", Instant.now());
         return festival;
     }
-    public static FestivalDto criaFestivalDto(){
+    public static FestivalDto criarFestivalDto(){
         Festival festival = criarFestival();
         return new FestivalDto(festival);
     }

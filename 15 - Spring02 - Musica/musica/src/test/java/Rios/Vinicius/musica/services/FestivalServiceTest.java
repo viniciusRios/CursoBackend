@@ -49,7 +49,7 @@ public class FestivalServiceTest {
         idChaveEstrangeira = 2L;
         contagemTotalDeFestivais = 8L;
         festival = FactoryFK.criarFestival();
-        festivalDto = FactoryFK.criaFestivalDto();
+        festivalDto = FactoryFK.criarFestivalDto();
         festivalList = new ArrayList<>();
 
         // Simulações da camada de repository;

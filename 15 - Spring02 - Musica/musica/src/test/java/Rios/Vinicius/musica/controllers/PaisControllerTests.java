@@ -4,11 +4,9 @@ import Rios.Vinicius.musica.dtos.PaisDto;
 import Rios.Vinicius.musica.services.PaisService;
 import Rios.Vinicius.musica.services.exceptions.RecursoNaoEncontrado;
 import Rios.Vinicius.musica.test.Factory;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -44,7 +42,7 @@ public class PaisControllerTests {
 
     @BeforeEach
     void setup() throws Exception{
-         idExistente = 1L;
+          idExistente = 1L;
           idNaoExistente = 2L;
           idChaveExtrangeira = 3L;
           paisDto = Factory.criarPaisDto();
@@ -62,6 +60,7 @@ public class PaisControllerTests {
                 .thenThrow(RecursoNaoEncontrado.class);
 
         doNothing().when(service).excluir(idExistente);
+        doThrow(RecursoNaoEncontrado.class).when(service).excluir(idNaoExistente);
     }
 
     @Test
@@ -152,9 +151,8 @@ public class PaisControllerTests {
     @Test
     public void excluirDeveriaRetornarUm404QuandoOIdNaoExistir() throws Exception {
 
-        ResultActions resultado = mockMvc
-                .perform(delete("/paises/{id}", idNaoExistente)
-                        .accept(MediaType.APPLICATION_JSON));
+        ResultActions resultado = mockMvc.perform(delete("/paises/{id}", idNaoExistente)
+                .accept(MediaType.APPLICATION_JSON));
 
         resultado.andExpect(status().isNotFound());
     }
